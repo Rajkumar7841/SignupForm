@@ -1,0 +1,211 @@
+<div class="signup-container">
+
+  <div class="signup-card">
+
+    <h1>Create Account</h1>
+    <p class="subtitle">Sign up to continue</p>
+
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+
+      <!-- First Name -->
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+
+        <input
+          type="text"
+          id="firstName"
+          formControlName="firstName"
+          placeholder="Enter first name"
+        >
+
+        @if (firstName?.touched && firstName?.hasError('required')) {
+          <small class="error">
+            First name is required.
+          </small>
+        }
+
+        @if (firstName?.touched && firstName?.hasError('pattern')) {
+          <small class="error">
+            First name should contain alphabets only.
+          </small>
+        }
+      </div>
+
+
+      <!-- Last Name -->
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+
+        <input
+          type="text"
+          id="lastName"
+          formControlName="lastName"
+          placeholder="Enter last name"
+        >
+
+        @if (lastName?.touched && lastName?.hasError('required')) {
+          <small class="error">
+            Last name is required.
+          </small>
+        }
+
+        @if (lastName?.touched && lastName?.hasError('pattern')) {
+          <small class="error">
+            Last name should contain alphabets only.
+          </small>
+        }
+      </div>
+
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="Enter email"
+        >
+
+        @if (email?.touched && email?.hasError('required')) {
+          <small class="error">
+            Email is required.
+          </small>
+        }
+
+        @if (email?.touched && email?.hasError('email')) {
+          <small class="error">
+            Please enter a valid email address.
+          </small>
+        }
+      </div>
+
+
+      <!-- Phone -->
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+
+        <input
+          type="text"
+          id="phone"
+          formControlName="phone"
+          placeholder="Enter phone number"
+          maxlength="13"
+        >
+
+        @if (phone?.touched && phone?.hasError('required')) {
+          <small class="error">
+            Phone number is required.
+          </small>
+        }
+
+        @if (phone?.touched && phone?.hasError('pattern')) {
+          <small class="error">
+            Enter a valid phone number.
+          </small>
+        }
+      </div>
+
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password</label>
+
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          placeholder="Enter password"
+        >
+
+
+        @if (password?.touched && password?.hasError('required')) {
+          <small class="error">
+            Password is required.
+          </small>
+        }
+
+        @if (password?.touched && password?.hasError('minlength')) {
+          <small class="error">
+            Password must be at least 6 characters.
+          </small>
+        }
+
+        @if (password?.touched && password?.hasError('pattern')) {
+          <small class="error">
+            Password must contain an alphabet, number and special character (@ # $ & !).
+          </small>
+        }
+      </div>
+
+
+      <!-- Repeat Password -->
+      <div class="form-group">
+        <label for="repeatPassword">Repeat Password</label>
+
+        <input
+          type="password"
+          id="repeatPassword"
+          formControlName="repeatPassword"
+          placeholder="Repeat password"
+        >
+
+        @if (repeatPassword?.touched && repeatPassword?.hasError('required')) {
+          <small class="error">
+            Please repeat your password.
+          </small>
+        }
+      </div>
+
+       @if (repeatPassword?.touched &&repeatPassword?.value &&password?.value !== repeatPassword?.value) {
+          <small class="error">
+            Passwords do not match.
+          </small>
+        }
+
+
+      <!-- Pincode -->
+      <div class="form-group">
+        <label for="pincode">Pincode</label>
+
+        <input
+          type="text"
+          id="pincode"
+          formControlName="pincode"
+          placeholder="Enter 6-digit pincode"
+          maxlength="6"
+        >
+
+        @if (pincode?.touched && pincode?.hasError('required')) {
+          <small class="error">
+            Pincode is required.
+          </small>
+        }
+
+        @if (pincode?.touched && pincode?.hasError('pattern')) {
+          <small class="error">
+            Pincode must be 6 digits and should not start with 0.
+          </small>
+        }
+      </div>
+
+
+      <!-- Server Error -->
+      @if (serverError) {
+        <div class="server-error">
+          {{ serverError }}
+        </div>
+      }
+
+
+      <!-- Submit -->
+      <button type="submit">
+        Sign Up
+      </button>
+
+    </form>
+
+  </div>
+
+</div>

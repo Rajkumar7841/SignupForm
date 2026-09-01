@@ -1,0 +1,62 @@
+<div class="confirmation-container">
+
+  <div class="confirmation-card">
+
+    @if (user) {
+
+      <div class="success-icon">
+        ✓
+      </div>
+
+      <h1>Registration Successful!</h1>
+
+      <p class="subtitle">
+        Your account has been created successfully.
+      </p>
+
+      <h2>
+        Welcome, {{ user.firstName }}!
+      </h2>
+
+      <div class="user-details">
+
+        <div class="detail-row">
+          <span>First Name</span>
+          <strong>{{ user.firstName }}</strong>
+        </div>
+
+        <div class="detail-row">
+          <span>Last Name</span>
+          <strong>{{ user.lastName }}</strong>
+        </div>
+
+        <div class="detail-row">
+          <span>Email</span>
+          <strong>{{ user.email }}</strong>
+        </div>
+
+        <div class="detail-row">
+          <span>Phone Number</span>
+          <strong>{{ user.phone }}</strong>
+        </div>
+
+        <div class="detail-row">
+          <span>Pincode</span>
+          <strong>{{ user.pincode }}</strong>
+        </div>
+
+      </div>
+
+    }
+
+    @if (!user) {
+
+      <div class="error-message">
+        Registration details not found.
+      </div>
+
+    }
+
+  </div>
+
+</div>
